@@ -10,3 +10,4 @@ class TaskList(ListView):
     https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-display/#listview
     """
     model = Task
+    context_object_name = 'tasks'  # templateでの変数名を変える

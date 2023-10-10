@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from todo_app.models import Task
 
@@ -23,6 +23,14 @@ class TaskDetail(DetailView):
 
 class TaskCreate(CreateView):
     model = Task
-    fields = '__all__'  # ['user', 'title'...]と同じ
+    # 作成対象フィールド
+    fields = '__all__'  # ['user', 'title', ...]と同じ
     # 作成後のリダイレクト
+    success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応
+
+
+class TaskUpdate(UpdateView):
+    model = Task
+    # 更新対象フィールド
+    fields = '__all__'  # ['user', 'title', ...]と同じ
     success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応

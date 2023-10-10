@@ -9,6 +9,7 @@
   <tr>
     <td>{{task.title}}</td>
     <td><a href="{% url 'task' task.id %}">確認</a></td>
+    <td><a href="{% url 'edit-task' task.id %}">編集</a></td>
   </tr>
   {% endfor %}
 </table>

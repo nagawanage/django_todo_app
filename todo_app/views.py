@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView
 
 from todo_app.models import Task
 
@@ -40,3 +41,12 @@ class TaskDelete(DeleteView):
     model = Task
     fields = '__all__'
     success_url = reverse_lazy('tasks')
+
+
+class TaskListLoginView(LoginView):
+    fields = '__all__'
+    # デフォルトはregistration/login.htmlなのでカスタマイズする
+    template_name = 'todo_app/login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('tasks')

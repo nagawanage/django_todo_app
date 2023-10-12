@@ -106,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ja'
 
+# 未ログイン時にLoginRequiredMixinからのリダイレクト先
+LOGIN_URL = 'login'
+
 TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True

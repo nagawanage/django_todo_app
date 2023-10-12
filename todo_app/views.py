@@ -5,11 +5,12 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from todo_app.models import Task
 
 
-class TaskList(ListView):
+class TaskList(LoginRequiredMixin, ListView):
     """TaskList
     https://docs.djangoproject.com/en/4.2/ref/class-based-views/generic-display/#listview
     """
@@ -17,12 +18,12 @@ class TaskList(ListView):
     context_object_name = 'tasks'  # templateでの変数名を変える
 
 
-class TaskDetail(DetailView):
+class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     context_object_name = 'task'
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     # 作成対象フィールド
     fields = '__all__'  # ['user', 'title', ...]と同じ
@@ -30,14 +31,14 @@ class TaskCreate(CreateView):
     success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     # 更新対象フィールド
     fields = '__all__'  # ['user', 'title', ...]と同じ
     success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     fields = '__all__'
     success_url = reverse_lazy('tasks')

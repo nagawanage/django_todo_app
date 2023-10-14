@@ -1,3 +1,5 @@
+from typing import Any
+from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -17,6 +19,15 @@ class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'  # templateでの変数名を変える
 
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        """
+        https://docs.djangoproject.com/en/4.2/ref/class-based-views/mixins-single-object/#django.views.generic.detail.SingleObjectMixin.get_context_data
+        """
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        print(f'TaskList: {context=}')
+        return context
+
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
@@ -26,9 +37,14 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     # 作成対象フィールド
-    fields = '__all__'  # ['user', 'title', ...]と同じ
+    fields = ['title', 'description', 'completed']
     # 作成後のリダイレクト
     success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        """ログインユーザーのデータのみ作成可能にする"""
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):

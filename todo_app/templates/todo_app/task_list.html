@@ -4,26 +4,56 @@
   <h1>TODOリスト（{{request.user}}さん）</h1>
 </div>
 
-<a href="{% url 'create-task' %}">タスク作成</a>
 
-<form action="" method="GET">
-  <input type="text" name="search" value="{{search}}">
-  <input type="submit" name="検索">
-</form>
+<div class="searchWrapper">
+  <form action="" method="GET">
+    <input type="text" name="search" value="{{search}}" class="searchInput">
+    <input type="submit" name="検索" value="検索" class="searchButton">
+  </form>
 
-<table>
-  <tr>
-    <th>タスク</th>
-  </tr>
+  <a href="{% url 'create-task' %}" class="addButton">タスク作成</a>
+</div>
+
+
+<div class="tasksWrapper">
   {% for task in tasks %}
-  <tr>
-    <td>{{task.title}}</td>
-    <td><a href="{% url 'task' task.id %}">確認</a></td>
-    <td><a href="{% url 'edit-task' task.id %}">編集</a></td>
-    <td><a href="{% url 'delete-task' task.id %}">削除</a></td>
-  </tr>
+  <div class="taskWrapper">
+    {% if task.completed %}
+    <!-- 完了タスク -->
+    <div class="taskTitle">
+      <div class="taskIcon taskCompletedIcon">Done</div>
+      <s><a href="{% url 'task' task.id %}">{{task}}</a></s>
+    </div>
+    <div class="taskIconGroup">
+      <!-- 編集 -->
+      <a href="{% url 'edit-task' task.id %}" class="editButton">
+        <i class="fa-solid fa-pen-to-square fa-xl" style="color: #0f6ba3;"></i>
+      </a>
+      <!-- 削除 -->
+      <a href="{% url 'delete-task' task.id %}" class="deleteButton">
+        <i class="fa-solid fa-circle-minus fa-xl" style="color: #e94949;"></i>
+      </a>
+    </div>
+    <!-- 未完了タスク -->
+    {% else %}
+    <div class="taskTitle">
+      <div class="taskIcon taskInCompletedIcon">ToDo</div>
+      <a href="{% url 'task' task.id %}">{{task}}</a>
+    </div>
+    <div class="taskIconGroup">
+      <!-- 編集 -->
+      <a href="{% url 'edit-task' task.id %}" class="editButton">
+        <i class="fa-solid fa-pen-to-square fa-xl" style="color: #0f6ba3;"></i>
+      </a>
+      <!-- 削除 -->
+      <a href="{% url 'delete-task' task.id %}" class="deleteButton">
+        <i class="fa-solid fa-circle-minus fa-xl" style="color: #e94949;"></i>
+      </a>
+    </div>
+    {% endif %}
+  </div>
   {% endfor %}
-</table>
+</div>
 
 <div class="loginAndLogout">
   {% if request.user.is_authenticated %}

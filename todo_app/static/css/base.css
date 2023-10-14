@@ -6,7 +6,7 @@ body {
 
 .todoAppWrapper {
   min-width: 530px;
-  margin: 0 auto;
+  margin: 0 30%;
   background-color: white;
   box-shadow: 0 12px 18px -7px #777;
   border-radius: 10px;
@@ -30,4 +30,85 @@ a {
     rgba(68, 33, 148, 0.9094012605042017) 100%
   );
   border-radius: 10px 10px 0 0;
+}
+
+.taskWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em;
+  border-top: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.taskTitle {
+  display: flex;
+  align-items: center;
+}
+
+.taskIcon {
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #fafafa;
+  height: 1em;
+  width: 2em;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding: 0.5em 1.2em;
+}
+
+.taskCompletedIcon {
+  background-color: gray;
+}
+
+.taskInCompletedIcon {
+  background-color: rgb(244, 169, 78);
+}
+
+.taskIconGroup {
+  display: flex;
+  justify-content: space-around;
+  width: 5em;
+}
+
+.loginAndLogout {
+  padding: 20px;
+}
+
+.loginAndLogout a {
+  color: lightcoral;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.searchInput {
+  height: 24px;
+  outline: none;
+  border: 1px solid lightseagreen;
+  border-radius: 5px;
+  padding: 2px 4px;
+  width: 160px;
+}
+
+.searchButton {
+  border: 1px solid lightseagreen;
+  padding: 4px 10px;
+  background-color: #fafafa;
+  color: lightseagreen;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.4s;
+}
+
+.searchButton:hover {
+  background-color: lightseagreen;
+  color: white;
 }

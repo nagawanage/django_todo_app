@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TaskCreate, TaskList, TaskDetail, TaskUpdate, TaskDelete, TaskListLoginView, RegisterTodoApp
+from .views import TaskCreate, TaskList, TaskDetail, TaskUpdate, TaskDelete, TaskListLoginView, RegisterUser
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -11,5 +11,5 @@ urlpatterns = [
     path('delete-task/<int:pk>/', TaskDelete.as_view(), name='delete-task'),  # PrimaryKeyの動的URL
     path('login/', TaskListLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('register/', RegisterTodoApp.as_view(), name='register'),
+    path('register/', RegisterUser.as_view(), name='register'),
 ]

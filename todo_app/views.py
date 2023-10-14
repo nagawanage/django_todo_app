@@ -80,7 +80,7 @@ class TaskListLoginView(LoginView):
         return reverse_lazy('tasks')
 
 
-class RegisterTodoApp(FormView):
+class RegisterUser(FormView):
     """アカウント新規登録"""
     template_name = 'todo_app/register.html'
     form_class = UserCreationForm  # ユーザー登録formに設定

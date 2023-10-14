@@ -1,9 +1,4 @@
-{% if request.user.is_authenticated %}
-<p>{{request.user}}</p>
-<a href="{% url 'logout' %}">ログアウト</a>
-{% else %}
-<a href="{% url 'login' %}">ログイン</a>
-{% endif %}
+{% extends 'todo_app/base.html' %} {% block content %}
 
 <h1>TODOリスト</h1>
 <a href="{% url 'create-task' %}">タスク作成</a>
@@ -26,3 +21,13 @@
   </tr>
   {% endfor %}
 </table>
+
+<div class="loginAndLogout">
+  {% if request.user.is_authenticated %}
+  <p>{{request.user}}</p>
+  <a href="{% url 'logout' %}">ログアウト</a>
+  {% else %}
+  <a href="{% url 'login' %}">ログイン</a>
+  {% endif %}
+</div>
+{% endblock content %}

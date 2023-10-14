@@ -27,7 +27,16 @@ class TaskList(LoginRequiredMixin, ListView):
         """
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
-        print(f'TaskList: {context=}')
+        # print(f'TaskList: {context=}')
+
+        # 検索機能対応
+        search_input_text = self.request.GET.get('search') or ''  # 検索結果がNoneなら空白
+        if search_input_text:
+            context['tasks'] = context['tasks'].filter(title__startswith=search_input_text)
+            # print(f'{search_input_text=}')
+
+        context['search'] = search_input_text
+
         return context
 
 

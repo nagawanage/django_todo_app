@@ -8,6 +8,11 @@
 <h1>TODOリスト</h1>
 <a href="{% url 'create-task' %}">タスク作成</a>
 
+<form action="" method="GET">
+  <input type="text" name="search" value="{{search}}">
+  <input type="submit" name="検索">
+</form>
+
 <table>
   <tr>
     <th>タスク</th>

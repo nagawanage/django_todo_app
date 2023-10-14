@@ -1,6 +1,9 @@
 {% extends 'todo_app/base.html' %} {% block content %}
 
-<h1>TODOリスト</h1>
+<div class="header">
+  <h1>TODOリスト（{{request.user}}さん）</h1>
+</div>
+
 <a href="{% url 'create-task' %}">タスク作成</a>
 
 <form action="" method="GET">
@@ -24,7 +27,6 @@
 
 <div class="loginAndLogout">
   {% if request.user.is_authenticated %}
-  <p>{{request.user}}</p>
   <a href="{% url 'logout' %}">ログアウト</a>
   {% else %}
   <a href="{% url 'login' %}">ログイン</a>

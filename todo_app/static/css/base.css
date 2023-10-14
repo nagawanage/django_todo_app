@@ -1,0 +1,33 @@
+body {
+  background-color: rgb(234, 246, 218);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  padding: 55px;
+}
+
+.todoAppWrapper {
+  min-width: 530px;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 12px 18px -7px #777;
+  border-radius: 10px;
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+.header {
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  /* CSS Gradient: https://cssgradient.io/ */
+  background: rgb(40, 95, 131);
+  background: linear-gradient(
+    90deg,
+    rgba(40, 95, 131, 1) 13%,
+    rgba(40, 75, 172, 1) 72%,
+    rgba(68, 33, 148, 0.9094012605042017) 100%
+  );
+  border-radius: 10px 10px 0 0;
+}

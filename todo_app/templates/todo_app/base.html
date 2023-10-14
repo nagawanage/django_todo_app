@@ -2,6 +2,7 @@
 <html lang="ja">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TODOアプリ</title>
@@ -9,29 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
-
-<style>
-  body {
-    background-color: rgb(234, 246, 218);
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    padding: 55px;
-  }
-
-  .todoAppWrapper {
-    min-width: 530px;
-    margin: 0 auto;
-    background-color: white;
-    box-shadow: 0 12px 18px -7px #777;
-    border-radius: 10px;
-  }
-
-  a {
-    color: grey;
-    text-decoration: none;
-    ;
-  }
-</style>
 
 <body>
   <div class="todoAppWrapper">

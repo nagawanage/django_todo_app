@@ -8,7 +8,7 @@
 <div class="searchWrapper">
   <form action="" method="GET">
     <input type="text" name="search" value="{{search}}" class="searchInput">
-    <input type="submit" name="検索" value="検索" class="searchButton">
+    <input type="submit" name="検索" value="検索" class="button">
   </form>
 
   <a href="{% url 'create-task' %}" class="addButton">タスク作成</a>
@@ -52,6 +52,11 @@
     </div>
     {% endif %}
   </div>
+
+  <!-- tasksがない場合、以下を通る -->
+  {% empty%}
+  <h3 style="margin-left: 1em;">タスクがありません</h3>
+
   {% endfor %}
 </div>
 

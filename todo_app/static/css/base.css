@@ -4,21 +4,29 @@ body {
   padding: 55px;
 }
 
+a {
+  color: lightseagreen;
+  text-decoration: none;
+}
+
+.inner {
+  padding: 1em;
+}
+
 .todoAppWrapper {
   min-width: 530px;
   margin: 0 30%;
-  background-color: white;
+  background-color: #fafafa;
   box-shadow: 0 12px 18px -7px #777;
   border-radius: 10px;
 }
 
-a {
-  color: grey;
-  text-decoration: none;
+.headerText {
+  color: #fafafa;
 }
 
 .header {
-  color: white;
+  color: #fafafa;
   text-align: center;
   padding: 20px 0;
   /* CSS Gradient: https://cssgradient.io/ */
@@ -94,10 +102,10 @@ a {
   border: 1px solid lightseagreen;
   border-radius: 5px;
   padding: 2px 4px;
-  width: 160px;
+  width: 160px !important;
 }
 
-.searchButton {
+.button {
   border: 1px solid lightseagreen;
   padding: 4px 10px;
   background-color: #fafafa;
@@ -108,7 +116,22 @@ a {
   transition: all 0.4s;
 }
 
-.searchButton:hover {
+.button:hover {
   background-color: lightseagreen;
-  color: white;
+  color: #fafafa;
+}
+
+.addButton {
+  /* font-size: 32px; */
+  margin-right: 0.5em;
+  color: lightseagreen;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+textarea {
+  width: 90%;
 }

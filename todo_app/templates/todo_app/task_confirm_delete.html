@@ -1,11 +1,16 @@
 {% extends 'todo_app/base.html' %} {% block content %}
 
-<a href="{% url 'tasks' %}">戻る</a>
+<div class="header">
+  <h1>タスク削除</h1>
+  <a href="{% url 'tasks' %}" class="headerText">戻る</a>
+</div>
 
-<form method="post">{% csrf_token %}
-  <p>「{{ task }}」を削除してよろしいですか？</p>
-  {{ form }}
-  <input type="submit" value="削除">
-</form>
+<div class="inner">
+  <form method="post">{% csrf_token %}
+    <p>「{{ task }}」を削除してよろしいですか？</p>
+    {{ form }}
+    <input type="submit" value="削除" class="button">
+  </form>
+</div>
 
 {% endblock content %}

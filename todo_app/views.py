@@ -61,8 +61,13 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     # 更新対象フィールド
-    fields = '__all__'  # ['user', 'title', ...]と同じ
+    fields = ['title', 'description', 'completed']
     success_url = reverse_lazy('tasks')  # urls.pyでのページ名と対応
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        """ログインユーザーのデータのみ更新可能にする"""
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
